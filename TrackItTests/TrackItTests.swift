@@ -10,6 +10,38 @@ import XCTest
 
 final class TrackItTests: XCTestCase {
 
+    func testViewControllerIsNotNil() {
+        // Given
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController
+        
+        // Then
+        XCTAssertNotNil(viewController, "View controller should not be nil")
+    }
+
+    func testSceneDelegateHasWindowProperty() {
+        // Given
+        let sceneDelegate = SceneDelegate()
+        
+        // Then
+        XCTAssertNotNil(sceneDelegate.window, "Scene delegate should have a window property")
+    }
+
+    func testAppDelegateConformsToUIApplicationDelegateProtocol() {
+        XCTAssertTrue(AppDelegate.self.conforms(to: UIApplicationDelegate.self), "AppDelegate should conform to UIApplicationDelegate protocol")
+    }
+
+    func testAppDelegateWindowIsNotNil() {
+        // Given
+        let appDelegate = AppDelegate()
+        
+        // Then
+        XCTAssertNotNil(appDelegate.window, "App delegate should have a window property")
+    }
+
+
+    
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
